@@ -1,0 +1,414 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>主页</title>
+<base target="_blank" />
+      <style>
+          body{margin:0; padding:0;}
+          
+		  a.special:link,a.special:visited
+          {
+             display:block;
+             font-weight:bold;
+             color:#FFFFFF;
+             background-color:#000000;
+             width:120px;
+			 height:20px;
+             text-align:center;
+             padding:4px;
+             text-decoration:none;
+             text-transform:uppercase;
+           }
+         a.special:hover,a.special:active
+          {
+          background-color:#FFFFFF;
+		  color:#000000;
+          }
+   </style>
+     <style>
+	      #globe{
+		     width:100%;
+			 height:3000px;
+			 background-image:url(jsp/tree.jpg);
+			 background-color:#FFFFFF;}
+		  #header{
+		     width:100%;
+			 height:20%;
+			 text-align:center;
+			 }
+		  #article{
+		     width:100%;
+			 height:60%;
+			 }
+		  #footer{
+		         clear:both;
+		         width:100%;
+				 height:100px;
+				}
+	 </style>
+	 <style>
+	      *{margin:0px;border: 0}
+          .warp{
+                margin-top:100px;
+                margin-left: 200px; 
+                width: 1030px;
+                height: 530px;
+                position: relative;
+                border: 1px solid #000000;
+                overflow: hidden;
+                box-shadow: 0 5px 54px rgb(0, 0, 0);
+               }
+          .broadcast{
+                margin:15px; 
+                width: 1000px;
+                height: 500px;
+                position: relative;
+                overflow: hidden;
+               }
+          .broadcast ul{
+                width: 400%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                padding: 0;
+                list-style: none;
+    
+              }
+          .broadcast li{
+                left: 0;
+                float: left;
+                list-style: none;                                                                                                                                                                                           }                                               
+
+          .broadcast img{
+                width: 1000px;
+                height: 500px;
+             }
+          .broadcast ol{
+                position: absolute;
+                right: 30px;
+                bottom: 30px;
+             }
+          .broadcast ol li{
+                position: relative;
+                float: left;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: rgba(155, 155, 155,.45);
+                color: #fff;
+                text-align: center;
+                margin-right: 15px;
+                cursor: pointer;
+                line-height: 20px;
+             }
+          .broadcast ol li.first-li{
+                background-color:rgba(248, 248, 248, 0.45)
+             }
+	 </style>
+	 <style>
+	       #colorchange{
+		        font-family:"微软雅黑";
+				font-size:70px;
+				
+				}
+	 </style>
+	 
+	 
+</head>
+
+<body>
+     <script>
+	         window.onload = function () {
+                       var broadcast = document.getElementById("broadcast"),
+                            img_list = document.getElementById("img_list"),
+                            button_list = document.getElementById("button_list").getElementsByTagName("li"),
+                            index = 0,
+                            timer = null;
+        //初始化
+                     if (timer) {
+                               clearInterval(timer);
+                               timer = null;
+                              } 
+   
+        // 自动切换
+                     timer = setInterval(autoPlay, 1000);
+   
+        // 调用自动播放函数
+                     function autoPlay() {
+                                 index++;
+                                 if (index >= button_list.length) {
+                                           index = 0;
+                                      }
+                         imgChange(index);
+                    }
+    
+                    function imgChange(buttonIndex) {
+                                 for (let i = 0; i < button_list.length; i++) {
+                                     button_list[i].className="";
+                                     }
+                              button_list[buttonIndex].className = "first-li";//按钮样式切换
+                              img_list.style.marginLeft = -1000 * buttonIndex + "px";
+                              index = buttonIndex;
+                       }
+    //鼠标接触div
+                    broadcast.onmouseover = function(){
+                               clearInterval(timer);
+
+                               }
+    //鼠标离开div
+                    broadcast.onmouseout = function(){
+                               timer = setInterval(autoPlay, 2000);
+                               }
+    //鼠标悬停ol
+                    for (var i = 0; i < button_list.length; i++) {
+                              button_list[i].id = i;
+                              button_list[i].onmouseover = function() {
+                              clearInterval(timer);
+                              imgChange(this.id);
+                            }
+                    }
+              }
+
+	 </script>
+     <div id="globe">
+       <div id="header">
+		       <div class="warp">
+                    <div class="broadcast" id="broadcast">
+                         <ul id="img_list">
+                              <li><img src="jsp/bk.jpg" alt="1"></li>
+                              <li><img src="jsp/blue.jpg" alt="2"></li>
+                              <li><img src="jsp/star.jpg" alt="3"></li>
+                              <li><img src="jsp/tree.jpg" alt="4"></li>
+                         </ul>
+                         <ol id="button_list"> <!-- 轮播按钮 -->
+                              <li class="first-li" id="olli1">1</li>
+                              <li id="olli2">2</li>
+                              <li id="olli3">3</li>
+                              <li id="olli4">4</li>
+                         </ol>
+                   </div>
+               </div>
+			
+
+
+		 </div>
+		 
+		 <!--头部 图片轮播-->
+		 
+         <div id="article">
+		     <table align="left" border="1">
+			       <tr>
+				       <th width="50px"><img src="jsp/hangzhou.jpg" width="50px" height="40px" /> </th>
+					   <th colspan="4">			   <p  align="center"style="width:1100px; font-family:'黑体';">杭州，简称“杭”，古称临安、钱塘，是浙江省省会、副省级市、杭州都市圈核心城市，国务院批复确定的浙江省省会和全省经济、文化、科教中心、长江三角洲中心城市之一   。截至2018年，全市下辖10个区、2个县、代管1个县级市，总面积16853.57平方千米，建成区面积559.2平方千米 ，常住人口980.6万人，城镇人口759.0万人，城镇化率77.4%......
+			   <a href="https://baike.baidu.com/item/%E6%9D%AD%E5%B7%9E/147639?fr=aladdin" >更多>></a> </p></th>
+				   </tr>
+			 
+			       <tr><th colspan="5" bgcolor="#000000"><h1 style="font-family:Geneva, Arial, Helvetica, sans-serif; color:#FFFFFF;">名胜古迹</h1></th></tr>
+			       <tr><th rowspan="9" width="100px"> </th></tr>
+			       <tr height="20px">
+				       <th width="50px" rowspan="2"> </th>
+				       <th width="500px" bgcolor="#000000">
+					         <h2 align="center" style="font-family:'黑体';color:#FFFFFF";>西湖</h2>	
+					   </th>
+					   <th width="50px" rowspan="2"> </th>
+					   <th width="500px" bgcolor="#000000">
+					         <h2 align="center" style="font-family:'黑体';color:#FFFFFF";>清河坊</h2>	 
+					   </th>
+				   </tr>
+				   <tr>
+				       <th width="500px">
+					         <p>  
+							     相传天上的玉龙和金凤在银河边的仙岛上找到 了一块白玉，他们一起琢磨了许多年，白玉就变成了一颗    璀璨的明珠，这颗宝珠的珠光照到哪里，哪里的树木就常青，百花就盛开。但是后来这颗宝珠被王母娘娘发现了，王母娘娘就派天兵天将把宝珠抢走，玉龙和金凤赶去索珠，王母不肯，于是就发生了争抢，王母的手一松，明珠就降落到人间，变成了波光粼粼的西湖，玉龙和金凤也随之下凡，变成了玉龙山（即玉皇山）和凤凰山。
+							 </p>
+					   </th>
+					   <th width="500px">
+					         <p>
+							 河坊街，是一条有着悠久历史和深厚文化底蕴的古街。它曾是古代都城杭州的“皇城根儿”，更是南宋的文化中心和经贸中心。
+							 </p>
+					   </th>
+				   </tr>
+				   <tr>
+				        <th colspan="2"><p align="left"><a href="web程序设计作业.html">查看详情>></a></p></th>
+						<th colspan="2"><p align="left"><a href="web程序设计作业.html">查看详情>></a></p></th>
+				   </tr>
+				   <tr><th colspan="4"><p align="right" style="font-size:11px">美丽杭州</p></th></tr>
+				   
+				   
+				   <tr height="20px">
+				       <th width="50px" rowspan="2"> </th>
+				       <th width="500px" bgcolor="#000000">
+					         <h2 align="center" style="font-family:'黑体';color:#FFFFFF";>西溪湿地公园</h2>	
+					   </th>
+					   <th width="50px" rowspan="2"> </th>
+					   <th width="500px" bgcolor="#000000">
+					         <h2 align="center" style="font-family:'黑体';color:#FFFFFF";>钱塘江</h2>	 
+					   </th>
+				   </tr>
+				   <tr>
+				       <th width="500px">
+					         <p>       西溪文化氛围相当浓厚，许多帝王将相、文人名士视其为人间净土、世外桃源，并留下了大批的诗文词章；西溪民俗文化尤其丰富多彩，至今仍保留了“龙舟胜会”、“碧潭网鱼”、“竹林挖笋”、“清明野餐”等诸多传统民俗；西溪的宗教文化也相当发达，以寺观、庵堂、祠庙、名园等为载体的建筑文化，更增添了西溪湿地的文化内涵。
+							 </p>
+					   </th>
+					   <th width="500px">
+					         <p>
+							 钱塘江，古称浙，全名“浙江”，又名“折江”、“之江”、“罗刹江”，一般浙江富阳段称为富春江，浙江下游杭州段称为钱塘江  。钱塘江最早见名于《山海经》，因流经古钱塘县（今杭州）而得名 ，是吴越文化的主要发源地之一。
+							 </p>
+					   </th>
+				   </tr>
+				   <tr>
+				        <th colspan="2"><p align="left"><a href="web程序设计作业.html">查看详情>></a></p></th>
+						<th colspan="2"><p align="left"><a href="web程序设计作业.html">查看详情>></a></p></th>
+				   </tr>
+				   <tr><th colspan="4"><p align="right" style="font-size:11px">美丽杭州</p></th></tr>
+				   
+				   <tr><th colspan="5" height="100px"><p align="center"><a class="special" href="https://you.ctrip.com/sight/hangzhou14.html">查看更多>></a></p></th></tr>
+				   <!--名胜古迹-->
+				   
+				   
+				 
+				   <tr><th colspan="5" bgcolor="#000000"><h1 style="font-family:Geneva, Arial, Helvetica, sans-serif; color:#FFFFFF;">风流人物</h1></th></tr>
+			       <tr><th rowspan="9" width="100px"> </th></tr>
+			       <tr height="20px">
+				       <th width="50px" rowspan="2"> </th>
+				       <th width="500px" bgcolor="#000000">
+					         <h2 align="center" style="font-family:'黑体';color:#FFFFFF";>孙权</h2>	
+					   </th>
+					   <th width="50px" rowspan="2"> </th>
+					   <th width="500px" bgcolor="#000000">
+					         <h2 align="center" style="font-family:'黑体';color:#FFFFFF";>袁枚</h2>	 
+					   </th>
+				   </tr>
+				   <tr>
+				       <th width="500px">
+					         <p>  
+							    孙权（182年－252年5月21日），字仲谋。吴郡富春县（今浙江省杭州市富阳区）人。三国时期孙吴的建立者（229年－252年在位）。
+							 </p>
+					   </th>
+					   <th width="500px">
+					         <p>
+							 袁枚（1716年3月25日－1798年1月3日），字子才，号简斋，晚年自号仓山居士、随园主人、随园老人。钱塘（今浙江杭州）人，祖籍浙江慈溪。 [1]  清朝乾嘉时期代表诗人、散文家、文学批评家和美食家。
+							 </p>
+					   </th>
+				   </tr>
+				   <tr>
+				        <th colspan="2"><p align="left"><a href="web程序设计作业.html">查看详情>></a></p></th>
+						<th colspan="2"><p align="left"><a href="web程序设计作业.html">查看详情>></a></p></th>
+				   </tr>
+				   <tr><th colspan="4"><p align="right" style="font-size:11px">美丽杭州</p></th></tr>
+				   
+				   
+				   <tr height="20px">
+				       <th width="50px" rowspan="2"> </th>
+				       <th width="500px" bgcolor="#000000">
+					         <h2 align="center" style="font-family:'黑体';color:#FFFFFF";>章太炎</h2>	
+					   </th>
+					   <th width="50px" rowspan="2"> </th>
+					   <th width="500px" bgcolor="#000000">
+					         <h2 align="center" style="font-family:'黑体';color:#FFFFFF";>戴望舒</h2>	 
+					   </th>
+				   </tr>
+				   <tr>
+				       <th width="500px">
+					         <p>       章太炎（1869年1月12日—1936年6月14日），浙江余杭人。原名学乘，字枚叔（以纪念汉代辞赋家枚乘），后易名为炳麟。因反清意识浓厚，慕顾绛（顾炎武）的为人行事而改名为绛，号太炎。世人常称之为“太炎先生”。早年又号“膏兰室主人”、“刘子骏私淑弟子”等，后自认“民国遗民”。清末民初民主革命家、思想家、著名学者，研究范围涉及小学、历史、哲学、政治等等，著述甚丰。
+							 </p>
+					   </th>
+					   <th width="500px">
+					         <p>
+戴望舒（1905年11月15日－1950年2月28日），男，名承，字朝安，小名海山，浙江杭州人。后曾用笔名梦鸥、梦鸥生、信芳、江思等。中国现代派象征主义诗人、翻译家等。他先后在鸳鸯蝴蝶派的刊物上发表过三篇小说：《债》、《卖艺童子》和《母爱》。曾经和杜衡、张天翼和施蛰存等人成立了一个名谓“兰社”的文学小团体，创办了《兰友》旬刊。1950年戴望舒在北京病逝，享年45岁。
+							 </p>
+					   </th>
+				   </tr>
+				   <tr>
+				        <th colspan="2"><p align="left"><a href="web程序设计作业.html">查看详情>></a></p></th>
+						<th colspan="2"><p align="left"><a href="web程序设计作业.html">查看详情>></a></p></th>
+				   </tr>
+				   <tr><th colspan="4"><p align="right" style="font-size:11px">美丽杭州</p></th></tr>	
+				   
+				   <tr><th colspan="5" height="100px"><p align="center"><a class="special" href="https://you.ctrip.com/sight/hangzhou14.html">查看更多>></a></p></th></tr>			   
+
+				   <!--古今人物-->
+				   
+				 			 
+				   <tr><th colspan="5" bgcolor="#000000"><h1 style="font-family:Geneva, Arial, Helvetica, sans-serif; color:#FFFFFF;">特色小吃</h1></th></tr>
+			       <tr><th rowspan="9" width="100px"> </th></tr>
+			       <tr height="20px">
+				       <th width="50px" rowspan="2"> </th>
+				       <th width="500px" bgcolor="#000000">
+					         <h2 align="center" style="font-family:'黑体';color:#FFFFFF";>东坡肉</h2>	
+					   </th>
+					   <th width="50px" rowspan="2"> </th>
+					   <th width="500px" bgcolor="#000000">
+					         <h2 align="center" style="font-family:'黑体';color:#FFFFFF";>叫花鸡</h2>	 
+					   </th>
+				   </tr>
+				   <tr>
+				       <th width="500px">
+					         <p>  
+							    东坡肉，又名滚肉、东坡焖肉，是眉山和江南地区特色传统名菜。东坡肉在浙菜、川菜、鄂菜等菜系中都有，且各地做法也有不同，有先煮后烧的，有先煮后蒸的，有直接焖煮收汁的。
+							 </p>
+					   </th>
+					   <th width="500px">
+					         <p>
+							相传，很早以前，有一个叫化子，沿途讨饭流落到常熟县的一个村庄。一日，他偶然得来一只鸡，欲宰杀煮食，可既无炊具，又没调料。他来到虞山脚下，将鸡杀死后去掉内脏，带毛涂上黄泥、柴草，把涂好的鸡置火中煨烤，待泥干鸡熟，剥去泥壳，鸡毛也随泥壳脱去，露出了熟的鸡肉。
+							 </p>
+					   </th>
+				   </tr>
+				   <tr>
+				        <th colspan="2"><p align="left"><a href="web程序设计作业.html">查看详情>></a></p></th>
+						<th colspan="2"><p align="left"><a href="web程序设计作业.html">查看详情>></a></p></th>
+				   </tr>
+				   <tr><th colspan="4"><p align="right" style="font-size:11px">美丽杭州</p></th></tr>
+				   
+				   
+				   <tr height="20px">
+				       <th width="50px" rowspan="2"> </th>
+				       <th width="500px" bgcolor="#000000">
+					         <h2 align="center" style="font-family:'黑体';color:#FFFFFF";>西湖醋鱼</h2>	
+					   </th>
+					   <th width="50px" rowspan="2"> </th>
+					   <th width="500px" bgcolor="#000000">
+					         <h2 align="center" style="font-family:'黑体';color:#FFFFFF";>西湖龙井</h2>	 
+					   </th>
+				   </tr>
+				   <tr>
+				       <th width="500px">
+					         <p>       西湖醋鱼的历史，源于南宋京都临安（今杭州），得从南宋杭州的“宋嫂鱼羹”说起。
+宋五嫂，为南宋著名民间女厨师，高宗赵构乘龙舟西湖，曾尝其鱼羹，赞美不已，于是名声大振，奉为脍鱼之“师祖”。从此，宋嫂鱼羹，遂扬名于世。其后又经名手整治，乃成西湖醋鱼与宋嫂鱼羹两种名菜，流传至今。
+							 </p>
+					   </th>
+					   <th width="500px">
+					         <p>
+西湖龙井茶历史悠久，最早可追溯到中国唐代，当时著名的茶圣陆羽，在所撰写的世界上第一部茶叶专著《茶经》中，就有杭州天竺、灵隐二寺产茶的记载。
+							 </p>
+					   </th>
+				   </tr>
+				   <tr>
+				        <th colspan="2"><p align="left"><a href="web程序设计作业.html">查看详情>></a></p></th>
+						<th colspan="2"><p align="left"><a href="web程序设计作业.html">查看详情>></a></p></th>
+				   </tr>
+				   <tr><th colspan="4"><p align="right" style="font-size:11px">美丽杭州</p></th></tr>	
+				   
+				   <tr><th colspan="5" height="100px"><p align="center"><a class="special" href="https://you.ctrip.com/sight/hangzhou14.html">查看更多>></a></p></th></tr>			   
+
+				   <!--吃的-->
+			 </table>
+		       
+		 </div>	
+		 <div id="footer">
+		       <table>
+			        <tr>
+					    <th width="100px"> </th>
+						<th width="400px"><p id="colorchange">悠 然 之 境</p></th>
+					    <th>
+						   <img src="jsp/hangzhou.jpg" align="middle"width="200px" height="180px"/>
+						</th>
+						<th width="400px"><p id="colorchange">闲 适 之 城</p></th>
+					</tr>
+			   </table>
+		 </div>	 
+	 </div>
+	 
+	 
+</body>
+</html>

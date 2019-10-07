@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style>
+    p.special{color:#FFFFFF;
+	          font-family:"微软雅黑";
+			  text-align:center;
+			  }
+</style>
+</head>
+
+<body background="jsp/star.jpg">
+       
+        <script type="text/javascript">
+		         function verify(){
+				         account=document.loginForm.account.value;
+						 pswd=document.loginForm.password.value;
+						 r_pswd=document.loginForm.r_password.value;
+						 email=document.loginForm.email.value;
+						 phone=document.loginForm.phone.value;
+						 
+						 if(account=="")
+						 {
+						    window.alert("账号不能为空");
+							document.loginForm.account.focus();
+							return;
+						  }
+						  else if(pswd=="")
+						  {
+						     window.alert("密码不能为空");
+							 document.loginForm.password.focus();
+							 return;
+						  }
+						  else if(r_pswd!=pswd)
+						  {
+						     window.alert("确认密码与原密码不符");
+							 document.loginForm.r_password.focus();
+							 return;
+						  }
+						  else if(email=="")
+						  {
+						     window.alert("电子邮箱不能为空");
+							 document.loginForm.email.focus();
+							 return;
+						  }
+						  else if(phone=="")
+						  {
+						     window.alert("联系方式不能为空")
+							 document.loginForm.phone.focus();
+							 return;
+						  }
+						  else
+						  {
+						     window.alert("提交成功");
+						  }
+						  document.loginForm.submit();
+						  window.open("web程序设计作业.html");
+						  
+						 
+				 }		 
+		</script>
+		
+		<form name="loginForm">	
+        <table border="0" align="center" width="500px">
+		   <tr>
+		      <td colspan="4"><img src="jsp/star.jpg" width="500px" height="200px"/></td> 
+		   </tr>
+		   <tr>
+		      <td rowspan="6" width="50px" bgcolor="#000000"> </td>
+			  <td width="70px"><p class="special">用户名:</p></td>
+			  <td><input type="text" name="account" /></td>
+			  <td rowspan="6" width="50px" bgcolor="#000000"> </td>
+		   </tr>
+		   <tr>
+		      <td><p class="special">密码:</p></td>
+			  <td><input type="password" name="password" /></td>
+		   </tr>
+		   <tr>
+		      <td><p class="special">确认密码:</p></td>
+			  <td><input type="password" name="r_password" /></td>
+		   </tr>
+		   <tr>
+		      <td><p class="special">电子邮箱:</p></td>
+			  <td><input type="text" name="email" /></td>
+		   </tr>  
+		   <tr>
+		      <td><p class="special">联系方式:</p></td>
+			  <td><input type="text" name="phone" /></td>
+		   </tr>
+		   <tr>
+		      <td> </td>
+			  <td><input type="button" name="put" onclick="verify()" value="提交"/></td>
+		   </tr>
+		   <tr>
+		      <td colspan="4"><img src="jsp/star.jpg" width="500px" height="50px"/></td>
+		   </tr>
+		</table>
+        </form>
+</body>
+</html>
