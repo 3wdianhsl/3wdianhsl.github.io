@@ -1,0 +1,11 @@
+.time {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: medium;
+	font-style: oblique;
+	line-height: 30px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: blink;
+	cursor: e-resize;
+	filter: Light;
+}
